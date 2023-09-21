@@ -51,7 +51,8 @@ class _HomeViewState extends State<HomeView> {
                                 return ListTile(
                                   title: Text(snapshot.data!.data[index].firstName.toString()),
                                   leading: CircleAvatar(
-                                    child: Image.network(snapshot.data!.data[index].avatar.toString()),
+
+                                    backgroundImage: NetworkImage(snapshot.data!.data[index].avatar.toString()),
                                   ),
                                 );
                               }),

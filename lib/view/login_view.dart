@@ -28,7 +28,7 @@ class _LoginViewState extends State<LoginView> {
     final authViewModel = Provider.of<AuthViewModel>(context);
     return  Scaffold(
       appBar: AppBar(
-        title: Text("Login",style: TextStyle(color: Colors.white),),
+        title: const Text("Login",style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.purple,
       ),
      body:  SafeArea(
@@ -45,14 +45,14 @@ class _LoginViewState extends State<LoginView> {
                    onFieldSubmitted: (value){
                      Utils.fieldFocusNode(context, emailFocus,passwordFocus);
                    },
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                      hintText: "Email",
                      prefixIcon: Icon(Icons.mail_lock),
                      labelText: "Email",
                      border: OutlineInputBorder()
                    ),
                  ),
-             SizedBox(height: 25,),
+             const SizedBox(height: 25,),
              ValueListenableBuilder(valueListenable: obscurePassword,
                  builder: (context,value, child){
                return  TextFormField(
@@ -64,20 +64,20 @@ class _LoginViewState extends State<LoginView> {
                  },
                  decoration: InputDecoration(
                    hintText: "Password",
-                   prefixIcon: Icon(Icons.lock),
+                   prefixIcon: const Icon(Icons.lock),
                    suffixIcon: InkWell(
                      onTap: (){
                        obscurePassword.value =! obscurePassword.value;
 
                      },
-                       child: Icon(Icons.change_circle)),
+                       child: const Icon(Icons.change_circle)),
                    labelText: "Password",
-                   border: OutlineInputBorder(),
+                   border: const OutlineInputBorder(),
                  ),
                );
                  }
              ),
-             SizedBox(height: 25,),
+             const SizedBox(height: 25,),
              RoundButton(text: "LOGIN",loading: authViewModel.loading, onPress: () async {
                authViewModel.setLoading(true);
                 if(emailController.text.toString().trim().isEmpty){
@@ -99,23 +99,23 @@ class _LoginViewState extends State<LoginView> {
                     "password":passwordController.text.toString().trim()
                   };
                   authViewModel.loginApi(data,context);
-                  print("Api Hit");
+                  debugPrint("Api Hit");
                 //  Utils.toastMessage("Api Hit");
                 }
-                await Future.delayed(Duration(seconds: 1));
+                await Future.delayed(const Duration(seconds: 1));
                authViewModel.setLoading(false);
 
 
              }),
-             SizedBox(height:  20,),
+             const SizedBox(height:  20,),
              Row(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Text("Don't have an account?" ),
+                 const Text("Don't have an account?" ),
                    TextButton(onPressed:(){
                      Navigator.pushNamed(context, RoutesName.signUp);
                    },
-                   child: Text("SignUp",style: TextStyle(color: Colors.blue),),)
+                   child: const Text("SignUp",style: TextStyle(color: Colors.blue),),)
 
                ],
              )],

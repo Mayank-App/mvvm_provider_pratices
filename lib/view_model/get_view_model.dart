@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import '../models/get_detail_model.dart';
 
 class GetViewModel extends ChangeNotifier {
-  List<GetUserDetailModel> user = [];
+  //List<GetUserDetailModel> user = [];
   final repo = AuthRespository();
 
   Future<GetUserDetailModel> userDetail() async {
